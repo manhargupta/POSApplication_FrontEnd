@@ -1,0 +1,172 @@
+.main {
+    border: #000 1px solid;
+}
+
+.menu {
+    background-color: #474344;
+    padding-left: 0px;
+}
+
+.menu_item {
+    padding: 10px;
+    border-bottom: #000 1px solid;
+}
+
+.window_width {
+    width: 99.5vw;
+    max-width: 99.5vw;
+}
+
+.window_height {
+    height: 99.5vh;
+    max-height: 99.5vh;
+}
+
+.white_font {
+    color: #ddd;
+}
+
+.center {
+    text-align: center;
+}
+
+.full_height {
+    height: 100%;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.menu_item_icon {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.menu_item.selected {
+    background-color: #543882;
+}
+
+.second_color {
+    background-color: #543882;
+    border: 1px solid #ddd;
+}
+
+.products {
+    padding: 5px;
+}
+
+.product_item {
+    /*border: #ddd 1px solid;*/
+    padding: 2px;
+}
+
+.product_item .product_image {
+    width: 100%;
+    padding: 2px;
+    border: #ddd solid 1px;
+    height: 100px;
+}
+
+.product_item .stock_number {
+    border: #ddd solid 1px;
+    font-weight: 500;
+    
+}
+
+.product_item .product_name {
+    text-transform: uppercase;
+    border: #ddd solid 1px;
+    margin-bottom: 1px;
+    font-weight: 500;
+}
+
+.product_item .caption {
+    position: absolute;
+    color: #fff;
+    background: #aaa;
+    padding: 2px;
+}
+
+.search_input_group {
+    padding: 10px;
+}
+
+.task_head {
+    height: 60px;
+}
+
+.cart_heading {
+    padding: 20px 0;
+}
+
+.cart_heading i {
+    /*float: left;*/
+}
+
+.cart_div {
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+
+.inner_head {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-weight: 500;
+    padding: 5px 0;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.inner_content {
+    padding: 10px 0;
+}
+
+.inner_content p {
+    font-weight: 200;
+}
+
+.checkout_div {
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    padding: 5px;
+}
+
+.checkout_div_inner {
+    background-color: #aa9cc0;
+    color: #fff;
+    margin: 2px;
+    width: 100%;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px;
+}
+
+.footer {
+    background-color: #000;
+    height: 25px;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.online_label {
+    border-radius: 25%;
+    background-color: #077904;
+    padding: 2px 5px;
+}

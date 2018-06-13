@@ -1,0 +1,107 @@
+<div *ngIf="selectedOrder">
+  <div class="row task_head second_color white_font center cart_heading">
+    <div class="col-md-12">
+      <h6>ORDER #<span class="detail_order_number">{{selectedOrder[0].order.orderId | splitOrder}}</span></h6>
+    </div>
+  </div>
+
+  <div class="row inner_content">
+    <div class="col-md-12 center">
+      <h1 class="detail_order_cost_head">US $<span class="detail_order_cost">{{selectedOrder[0].totalAmount}}</span></h1>
+    </div>
+    <div class="col-md-12 center">
+      <p class="para">
+        <span class="detail_order_head bold">Created Date :</span>
+        <span class="detail_order_date">{{selectedOrder[0].order.orderDate}}</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">Status :</span>
+        <span class="detail_order_status bold">{{selectedOrder[0].order.orderStatus}}</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">Total Due :</span>
+        <span class="detail_order_due" *ngIf="selectedOrder[0].order.orderStatus=='COMPLETE'">US $0,00</span>
+        <span style="color: red" class="detail_order_due" *ngIf="selectedOrder[0].order.orderStatus=='PENDING'">US {{selectedOrder[0].totalAmount | currency}}</span>
+      </p>
+      <p class="para"  *ngIf="selectedOrder[0].order.orderStatus=='PENDING'">
+        <button class="reload_btn pull-left arrow" (click)="reload()">RELOAD</button>
+        <button class="reload_btn pull-right arrow" (click)="cancel()">CANCEL</button>
+      </p>
+    </div>
+  </div>
+
+  <div class="row inner_head">
+    <div class="col-md-12 text-left inner_heading">
+      <h6>Mode of Payment</h6>
+    </div>
+  </div>
+
+  <div class="row inner_content">
+    <div class="col-md-8 text-left">
+      <p class="para">
+        <span class="bold detail_order_head detail_order_type">{{selectedOrder[0].order.paymentType}} Only</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">
+            Order was placed using
+            <span class="detail_order_using">USD</span>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="row inner_head">
+    <div class="col-md-6 text-left inner_heading">
+      <h6>Products</h6>
+    </div>
+    <div class="col-md-2 text-left inner_heading">
+      <h6>Price</h6>
+    </div>
+    <div class="col-md-2 center inner_heading">
+      <h6>Quantity</h6>
+    </div>
+    <div class="col-md-2 text-right inner_heading">
+      <h6>Subtotal</h6>
+    </div>
+  </div>
+
+  <div class="inner_content detail_order_products" >
+    <div class="row detail_order_product" *ngFor="let product of selectedOrder[0].order.items">
+      <div class="col-md-6 text-left">
+        <p class="product_name bold">{{product.product.name}}</p>
+      </div>
+      <div class="col-md-2 text-left">
+        <p class="product_price bold">US {{product.product.price | currency}}</p>
+      </div>
+      <div class="col-md-2 center">
+        <p class="product_quantity bold">{{product.quantity}}</p>
+      </div>
+      <div class="col-md-2 text-right">
+        <p class="product_subtotal bold">US {{product.product.price * product.quantity | currency}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row inner_content">
+    <div class="col-md-12 text-right">
+      <p class="para">
+        <span class="detail_order_head">Subtotal</span>
+        <span class="order_detail_grand_total">US {{selectedOrder[0].totalAmount-10 | currency}}</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">Tax</span>
+        <span class="order_detail_grand_total">US $10</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">Grand Total</span>
+        <span class="order_detail_grand_total bold">US {{selectedOrder[0].totalAmount | currency}}</span>
+      </p>
+      <p class="para">
+        <span class="detail_order_head">Total Paid</span>
+        <span class="order_detail_grand_total bold" *ngIf="selectedOrder[0].order.orderStatus=='PENDING'">US {{0 | currency}}</span>
+        <span class="order_detail_grand_total bold" *ngIf="selectedOrder[0].order.orderStatus=='COMPLETE'">US {{selectedOrder[0].totalAmount | currency}}</span>
+      </p>
+    </div>
+  </div>
+</div>

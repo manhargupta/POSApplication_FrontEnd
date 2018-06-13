@@ -1,0 +1,41 @@
+<div class="row task_head second_color white_font center cart_heading">
+  <div class="col-md-12">
+    <h6 class="heading">ORDERS</h6>
+    <input type="text" [(ngModel)]="osearch" class="form-control" style="display: none"
+           [ngClass]="{'ordersearch':orderSearchbutton==1}" name="ordersearch" id="ordersearch"
+           placeholder="Search Order...">
+    <i class="fa fa-search pull-right" (click)="displaySearchOrder()"></i>
+  </div>
+</div>
+<div class="row task_body orders_body">
+  <div class="col-md-12 orders_div">
+    <ul class="orders_list">
+      <div *ngFor="let order of orders | myPipe" >
+          <li class="date row">
+            <div class="col-md-12 full_height">
+              <span class="date">{{order.key}}</span>
+            </div>
+          </li>
+          <li class="order row arrow" *ngFor="let oDetail of order.value | filterOrder:osearch"
+              (click)="selectOrder(oDetail.order.orderId, order.key)" id="{{oDetail.order.orderId}}" [ngClass]="{'active':isActive==oDetail.order.orderId}">
+            <div class="col-md-1 full_height">
+              <div *ngIf="oDetail.order.orderStatus=='COMPLETE'" class="status_dot green"></div>
+              <div *ngIf="oDetail.order.orderStatus=='PENDING'" class="status_dot red"></div>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p class="normal para">#<span class="order_number">{{oDetail.order.orderId |splitOrder}}</span></p>
+              <p class="small para order_name">{{oDetail.order.customer.firstName}}</p>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p class="normal para"></p>
+              <p class="small para order_time">{{oDetail.order.orderDate | date:'HH:mm:ss'}}</p>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p class="normal para">US $<span class="order_cost">{{oDetail.totalAmount}}</span></p>
+              <p class="small para order_status">{{oDetail.order.orderStatus}}</p>
+            </div>
+          </li>
+        </div>
+    </ul>
+  </div>
+</div>

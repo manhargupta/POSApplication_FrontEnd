@@ -1,0 +1,13 @@
+.report_body{
+  margin-left: auto;
+  padding: 30px;
+  padding-top: 20vh;
+  margin: auto;
+  display: table;
+  width: 500px;
+  text-align: center;
+}
+.form-control{
+  margin-bottom: 30px;
+  border: none;
+}

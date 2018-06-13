@@ -1,0 +1,20 @@
+<div class="menu_item col-md-12 center white_font" [ngClass]="{'selected':selectedIndex==1}" (click)="navigateDashboard(1)">
+  <i class="fa fa-th fa-4x white_font col-md-12"></i>
+  <h6>Checkout</h6>
+</div>
+<div class="menu_item col-md-12 center white_font" [ngClass]="{'selected':selectedIndex==2}" (click)="navigateOrdersList(2)" >
+  <i class="fa fa-tag fa-4x menu_item_icon white_font col-md-12"></i>
+  <h6>Order List</h6>
+</div>
+<div class="menu_item col-md-12 center white_font" [ngClass]="{'selected':selectedIndex==3}" (click)="navigateSavedOrdersList(3)">
+  <i class="fa fa-save fa-4x menu_item_icon white_font col-md-12"></i>
+  <h6>Save Orders</h6>
+</div>
+<div class="menu_item col-md-12 center white_font" [ngClass]="{'selected':selectedIndex==4}" (click)="navigateCashDrawer(4)">
+  <i class="fa fa-wallet fa-4x menu_item_icon white_font col-md-12"></i>
+  <h6>Cash Drawer</h6>
+</div>
+<div class="menu_item col-md-12 center white_font" [ngClass]="{'selected':selectedIndex==5}" (click)="navigateReport(5)">
+  <i class="fa fa-chart-line fa-4x menu_item_icon white_font col-md-12"></i>
+  <h6>Reports</h6>
+</div>

@@ -1,0 +1,74 @@
+<div class="row task_head second_color white_font center cart_heading">
+  <div class="col-md-12">
+    <i style="font-size: 1.5em;" class="fa fa-edit pull-left arrow" (click)="navigate()"></i>
+    <h6>Cart</h6>
+  </div>
+</div>
+
+
+<!-- show customer  -->
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>
+      <i style="margin-right: 10px;font-size: 27px;" class="fa fa-user pull-left user-glif" ></i>  {{searchedCustomer?.firstName}} <br>
+      <span style="color: grey;" >{{searchedCustomer?.email}}</span>
+    </h6>
+  </div>
+</div>
+<!-- show customer ends-->
+
+
+<div class="row cart_div_inner inner_head" id="style-1">
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th>Unit Price</th>
+      <th>Qty</th>
+      <th>Subtotal</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let cart of carts">
+      <td><img class="imgsize" src="../../../assets/no-image.jpg"></td>
+      <td>{{cart.product.name}}</td>
+      <td>{{cart.product.price}}</td>
+      <td> <span style="font-size: 1.2em;">{{cart.quantity}}</span></td>
+      <td>{{cart.product.price * cart.quantity}}</td>
+    </tr>
+
+  </table>
+</div>
+
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>Subtotal</h6>
+  </div>
+  <div class="col-md-4 text-right">
+    <h6>US <span class="subtotal_number">{{subTotal | currency}}</span></h6>
+  </div>
+</div>
+
+<div class="row  inner_content">
+  <div class="col-md-8 text-left">
+    <p>Tax</p>
+  </div>
+  <div class="col-md-4 text-right">
+    <p>US $
+      <span class="subtotal_number" *ngIf="subTotal==0">0.00</span>
+      <span class="subtotal_number" *ngIf="subTotal!=0">10.0</span>
+    </p>
+  </div>
+</div>
+
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>Grand Total</h6>
+  </div>
+  <div class="col-md-4 text-right">
+    <h6>US
+      <span class="subtotal_number" *ngIf="subTotal==0">0.00</span>
+      <span class="subtotal_number" *ngIf="subTotal!=0">{{subTotal+10 |currency}}</span></h6>
+  </div>
+</div>
+

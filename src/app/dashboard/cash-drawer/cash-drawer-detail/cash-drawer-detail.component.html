@@ -1,0 +1,34 @@
+<div *ngIf="selectedCashDrawer">
+  <div class="row task_head second_color white_font center cart_heading">
+    <div class="col-md-12">
+      <h6 class="heading">CASH DRAWER DETAILS</h6>
+    </div>
+  </div>
+  <div class="row task_body orders_body">
+    <div class="col-md-12 orders_div">
+      <ul class="orders_list">
+        <div *ngFor="let cashDrawer of selectedCashDrawer">
+
+          <li style="cursor: default" class="order row">
+            <div class="col-md-1 full_height">
+              <div class="status_dot green"></div>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p style="font-weight: normal;" class="normal para"><span class="order_number">Login Time</span></p>
+              <p class="normal para order_name">{{cashDrawer.date | date :['HH:MM:SS']}}</p>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p style="font-weight: normal;" class="normal para">Check-in Balance</p>
+              <p class="normal para order_time">{{cashDrawer.startBal}}</p>
+            </div>
+            <div class="col-md-3 center full_height">
+              <p style="font-weight: normal;" class="normal para">Check-out Balance</p>
+              <p class="normal para order_status">{{cashDrawer.endBal}}</p>
+            </div>
+          </li>
+
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

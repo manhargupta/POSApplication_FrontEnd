@@ -1,0 +1,18 @@
+<div class="wrap">
+  <div class="avatar">
+    <img src="https://media.giphy.com/media/WiIuC6fAOoXD2/giphy.gif">
+  </div>
+  <input type="text" placeholder="email" required #name>
+  <div class="bar">
+    <i></i>
+  </div>
+  <input type="password" placeholder="password" required #pass>
+  <br>
+  <input type="text" placeholder="Start Balance" required #startbal>
+  <br>
+  <button (click)="login(name.value,pass.value,startbal.value)">Sign in</button>
+  <br>
+  <span *ngIf="errorMsg" class="error-msg">**{{errorMsg}}</span>
+</div>
+<router-outlet name="main"></router-outlet>
+

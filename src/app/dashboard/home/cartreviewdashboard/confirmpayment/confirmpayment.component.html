@@ -1,0 +1,40 @@
+<div style="background-color: white">
+<div class="row task_head second_color white_font center cart_heading">
+  <div class="col-md-12">
+    <h6>Check out & Payment method</h6>
+  </div>
+</div>
+
+
+<!-- show employee  -->
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>
+      Sales Executive : <input class="sales_input" type="text" disabled="disabled" [value]="empName">
+    </h6>
+  </div>
+</div>
+<!-- show employee ends-->
+
+
+<div class="row  checkout_payment">
+  <div class="inner">
+    <div class="col-md-12">
+      <h4>PAYMENT</h4>
+    </div>
+    <div class="col-md-12">
+      <mat-radio-group>
+        <mat-radio-button #paymode1 (click)="getValue(paymode1.value)" value="CASH">CASH</mat-radio-button>
+        <mat-radio-button #paymode2 (click)="getValue(paymode2.value)" style="margin-left: 30px;"  value="CARD">CARD</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 pay_btn">
+      <button style="margin-right: 40px;border: 1px black solid;" class="btn save_order" (click)="saveOrder()">SAVE ORDER</button>
+      <button class="btn place_order" (click)="placeOrder()">PLACE ORDER</button>
+    </div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+
+  <div class="row full_height">
+    <div class="col-md-6">
+      <app-product  [searchedCustomer]="searchedCustomer" (res)="updateCart($event)"></app-product>
+    </div>
+    <div class="col-md-6 full_height cart_div">
+      <app-cart [carts]="carts" [subTotal]="subTotal" [searchedCustomer]="searchedCustomer" (res)="updateCart($event)" (resCust)="updateCust($event)"></app-cart>
+    </div>
+  </div>
+

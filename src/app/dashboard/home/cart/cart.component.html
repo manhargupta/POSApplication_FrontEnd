@@ -1,0 +1,116 @@
+<div class="row task_head second_color white_font center cart_heading">
+  <div class="col-md-12">
+    <i style="font-size: 1.5em;" class="fa fa-trash-alt pull-left arrow " (click)="deleteCustomerCart()"></i>
+    <h6>Cart</h6>
+  </div>
+</div>
+
+<div class="row  inner_head">
+  <div class="col-md-12">
+    <div class="form">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span style="border-radius: 5px 0px 0px 5px;" class="input-group-text"><i class="fa fa-search"></i></span>
+        </div>
+        <input style="border-radius: 0px 5px 5px 0px;" type="text" name="search_item" class="form-control input-radius"  placeholder="Search Customer"  #custSearch (keyup)="customerSearch(custSearch.value)">
+      </div>
+    </div>
+    <!-- Customer list code div start -->
+    <div class="col-md-11 customer_list_div" id="customer_list_div" *ngIf="showElement" (blur)="showCustomerList(false)" tabindex="0">
+      <ul id="customer_list" class="customer_list ful_width" >
+        <li class="row customer" *ngFor="let customer of customers" [id]="customer.id" #cust (click)="selectCustomer(cust.id)">
+          <span class="col-md-6 pull-left name">{{customer.firstName}}</span>
+          <span class="col-md-6 pull-right email">{{customer.email}}</span>
+        </li>
+      </ul>
+    </div>
+    <!-- Customer list code div end -->
+  </div>
+</div>
+
+<!-- show customer  -->
+<div class="row  inner_head" *ngIf="searchedCustomer!=null">
+  <div class="col-md-8 text-left">
+    <h6>
+      <i style="margin-right: 10px;font-size: 27px;" class="fa fa-user pull-left user-glif" ></i>  {{searchedCustomer.firstName}} <br>
+      <span style="color: grey;" >{{searchedCustomer.email}}</span>
+    </h6>
+  </div>
+  <div class="col-md-4 text-right">
+    <button class="btn btn-danger cust_delete_btn" (click)="removeCustomer()">Delete</button>
+  </div>
+</div>
+<!-- show customer ends-->
+
+
+<div class="row cart_div_inner inner_head" id="style-1" *ngIf="subTotal!=0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Qty</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let cart of carts">
+      <td><img class="imgsize" src="../../../../assets/no-image.jpg"></td>
+      <td>{{cart.product.name}}</td>
+      <td>{{cart.product.price}}</td>
+      <td><i style="color: #5b3e8a; font-size: 1.2em" class="fas fa-minus-circle arrow" (click)="decProductQuantity(cart.product.id)"></i> <span style="font-size: 1.2em;">{{cart.quantity}}</span> <i style="font-size: 1.2em;color: #5b3e8a;" class="fas fa-plus-circle arrow" (click)="incProductQuantity(cart.product.id)"></i></td>
+      <td>{{cart.product.price * cart.quantity}}</td>
+      <td> <i style="font-size: 1.2em;color: grey;" class="fa fa-times-circle col-md-12 arrow" (click)="deleteProduct(cart.product.id)"></i></td>
+    </tr>
+
+  </table>
+</div>
+
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>Subtotal</h6>
+  </div>
+  <div class="col-md-4 text-right">
+    <h6>US <span class="subtotal_number">{{subTotal | currency}}</span></h6>
+  </div>
+</div>
+
+<div class="row  inner_content">
+  <div class="col-md-8 text-left">
+    <p>Tax</p>
+  </div>
+  <div class="col-md-4 text-right">
+    <p>US $
+      <span class="subtotal_number" *ngIf="subTotal==0">0.00</span>
+      <span class="subtotal_number" *ngIf="subTotal!=0">10.0</span>
+    </p>
+  </div>
+</div>
+
+<div class="row  inner_head">
+  <div class="col-md-8 text-left">
+    <h6>Grand Total</h6>
+  </div>
+  <div class="col-md-4 text-right">
+    <h6>US
+      <span class="subtotal_number" *ngIf="subTotal==0">0.00</span>
+      <span class="subtotal_number" *ngIf="subTotal!=0">{{subTotal+10 |currency}}</span></h6>
+  </div>
+</div>
+
+<div class="row checkout_div white_font" (click)="reviewCart()">
+  <div class=" row checkout_div_inner">
+    <div class="col-md-7  text-left">
+      <h4 class="checkout_text_center">CHECKOUT</h4>
+    </div>
+    <div class="col-md-5 text-right">
+      <h4>US
+        <span class="subtotal_number checkout_text_center" *ngIf="subTotal==0">0.00</span>
+        <span class="subtotal_number checkout_text_center" *ngIf="subTotal!=0">{{subTotal+10 |currency}}</span>
+        &nbsp;<i class="fa fa-angle-right"></i>
+      </h4>
+    </div>
+  </div>
+</div>
+

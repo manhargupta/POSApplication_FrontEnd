@@ -1,0 +1,25 @@
+<div class="row task_head second_color white_font">
+  <div class="col-md-12">
+    <div class="form">
+      <div class="input-group search_input_group">
+        <input type="text" name="search_item" class="form-control input-radius" placeholder="Search Item or Scan Barcode" #psearch (keyup)="productSearch(psearch.value)">
+        <i style="font-size: 1.8em;margin: 5px 0px 0px 13px;" class="fa fa-search"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row task_body">
+  <div class="col-md-12 full_height">
+    <div class="row products full_height" id="style-1">
+      <div class="col-md-3 product_item" *ngFor="let product of products" (click)="addProductToCart(product.id)">
+        <!-- <div class="inner"> -->
+        <p class="caption">{{product.pcode}} </p>
+        <!-- <img class="product_image" src="assets/image/no-image.jpg" alt="no image"> -->
+        <img class="product_image" src="../../../../assets/no-image.jpg" alt="no image">
+        <p class="product_name center" style="font-size: 13px;">{{product.name}}</p>
+        <p class="stock_number center">Stock : <span style="font-weight: bold">{{product.stock}}</span> <span class="number"></span></p>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

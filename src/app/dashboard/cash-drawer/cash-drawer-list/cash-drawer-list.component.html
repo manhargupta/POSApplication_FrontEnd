@@ -1,0 +1,23 @@
+<div class="row task_head second_color white_font center cart_heading">
+  <div class="col-md-12">
+    <h6 class="heading">CASH DRAWERS</h6>
+  </div>
+</div>
+<div class="row task_body orders_body">
+  <div class="col-md-12 orders_div">
+    <ul class="orders_list">
+      <div *ngFor="let cashDrawer of cashDrawer | myPipe;let i=index" >
+
+        <li class="order row arrow" (click)="selectCashDrawer(cashDrawer.key,i)" id="{{i}}" [ngClass]="{'active':isActive==i}">
+          <div class="col-md-1 full_height">
+            <div class="status_dot green"></div>
+          </div>
+          <div class="col-md-3 center full_height">
+            <p class="normal para"># <span class="order_number">{{cashDrawer.key | date}}</span></p>
+          </div>
+        </li>
+
+      </div>
+    </ul>
+  </div>
+</div>
